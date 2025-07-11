@@ -6,7 +6,6 @@ from langchain.text_splitter import CharacterTextSplitter
 from langchain.schema import Document
 from sentence_transformers import SentenceTransformer
 import faiss
-import numpy as np
 
 class DocumentProcessor:
     def __init__(self, knowledge_base_path="knowledge_base.pkl"):
