@@ -216,6 +216,10 @@ def reset():
     chatbot.reset_history()
     return jsonify({'status': 'chat history cleared'})
 
+@app.route('/')
+def index():
+    return 'Portfolio Chatbot API up & running!'
+
 port = int(os.environ.get("PORT", 9001))
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=port)
