@@ -1,4 +1,4 @@
-flask
+Flask
 flask-cors
 groq
 python-dotenv
@@ -8,3 +8,4 @@ PyPDF2
 langchain
 langchain-community
 gunicorn
+numpy
