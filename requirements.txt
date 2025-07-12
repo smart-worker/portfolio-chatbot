@@ -7,3 +7,4 @@ faiss-cpu
 PyPDF2
 langchain
 langchain-community
+gunicorn
