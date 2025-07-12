@@ -12,7 +12,7 @@ import psutil
 import gc
 
 # Load environment variables
-load_dotenv()
+load_dotenv(override=True)
 
 app = Flask(__name__)
 CORS(app)
@@ -322,8 +322,32 @@ def index():
     return f'Portfolio Chatbot API up & running! Memory usage: {chatbot.get_memory_usage()} MB'
 
 if __name__ == '__main__':
-    port = int(os.environ.get("PORT", 5000))
+    import os
+    
+    # Debug all environment variables
+    print("🔍 All Environment Variables:")
+    for key, value in os.environ.items():
+        if key in ['PORT', 'GROQ_API_KEY']:
+            print(f"   {key}: {value}")
+    
+    # Multiple ways to get PORT
+    port = None
+    
+    # Method 1: Direct os.environ access
+    if 'PORT' in os.environ:
+        port = int(os.environ['PORT'])
+        print(f"✅ Found PORT via os.environ: {port}")
+    
+    # Method 2: os.getenv fallback
+    elif os.getenv('PORT'):
+        port = int(os.getenv('PORT'))
+        print(f"✅ Found PORT via os.getenv: {port}")
+    
+    # Method 3: Default fallback
+    else:
+        port = 5000
+        print(f"⚠️ PORT not found, using default: {port}")
+    
     print(f"🚀 Starting Flask app on port {port}")
     print(f"📊 Startup memory usage: {chatbot.get_memory_usage()} MB")
-    # Remove debug=True for production
     app.run(host='0.0.0.0', port=port)
