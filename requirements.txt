@@ -1,11 +1,3 @@
 Flask
 flask-cors
-groq
-python-dotenv
-sentence-transformers
-faiss-cpu
-PyPDF2
-langchain
-langchain-community
 gunicorn
-numpy
