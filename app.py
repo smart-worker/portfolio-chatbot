@@ -157,7 +157,7 @@ Instructions:
             print(f"🔧 Loading full knowledge base... Current memory: {current_memory} MB")
             
             # Safety check - don't load if memory is already high
-            if current_memory > 350:
+            if current_memory > 420:
                 print(f"⚠️ Memory too high ({current_memory} MB) to safely load knowledge base")
                 return False
             
@@ -187,6 +187,7 @@ Instructions:
 
     def load_models_gradually(self):
         """Load models one at a time with memory monitoring"""
+        print("load models gradually called")
         if self._models_loading:
             return {"status": "Models are currently loading, please wait...", "loading": True}
         
@@ -208,7 +209,7 @@ Instructions:
             
             # Step 2: Load knowledge base if memory permits
             current_memory = self.get_memory_usage()
-            if current_memory < 300 and not self._knowledge_base_loaded:
+            if current_memory < 420 and not self._knowledge_base_loaded:
                 memory_before = current_memory
                 success = self.load_full_knowledge_base()
                 memory_after = self.get_memory_usage()
